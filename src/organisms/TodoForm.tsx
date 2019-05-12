@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { InputWithLabel } from '../molecules/InputWithLabel'
 import { TodoList as TodoListStore, Todo } from '../store'
 import { Button } from '../atoms/Button'
