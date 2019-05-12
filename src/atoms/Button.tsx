@@ -19,4 +19,7 @@ const BaseStyle = styled.button`
   background-color: white;
   border: solid 1px black;
   border-radius: 10px;
+  :focus {
+    outline: none;
+  }
 `
