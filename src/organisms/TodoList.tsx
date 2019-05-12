@@ -13,13 +13,6 @@ type Props = {
 export const TodoList: React.FC<Props> = observer(({ todoListStore }) => (
   <div>
     <StyledSubTitle>Your Todo</StyledSubTitle>
-    {todoListStore.todos.map(todo => (
-      <TodoItem
-        key={todo.id}
-        title={todo.title}
-        description={todo.description}
-      />
-    ))}
     {(() => {
       if (!todoListStore.todos.length)
         return (
@@ -27,9 +20,28 @@ export const TodoList: React.FC<Props> = observer(({ todoListStore }) => (
             <Message>No Todo :)</Message>
           </MessageWrapper>
         )
+      return (
+        <CountWrapper>
+          <div>Finished: {todoListStore.finishedCount.toString()}</div>
+          <div>Unfinished: {todoListStore.unfinishedCount.toString()}</div>
+        </CountWrapper>
+      )
     })()}
+    {todoListStore.todos.map(todo => (
+      <TodoItem
+        key={todo.id}
+        title={todo.title}
+        description={todo.description}
+      />
+    ))}
   </div>
 ))
+
+const CountWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+`
 
 const StyledSubTitle = styled(SubTitle)`
   text-align: center;
