@@ -7,4 +7,6 @@ const Li = styled.li`
   list-style: none;
   height: auto;
   width: auto;
+  border: solid 1px #eeeeee;
+  padding: 10px;
 `

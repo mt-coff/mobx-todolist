@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { TodoList as TodoListStore } from '../store'
 import { SubTitle } from '../atoms/SubTitle'
-import { List } from '../atoms/List'
+import { TodoItem } from '../molecules/TodoItem'
 import { Message } from '../atoms/Message'
 import styled from 'styled-components'
 
@@ -12,9 +12,13 @@ type Props = {
 
 export const TodoList: React.FC<Props> = observer(({ todoListStore }) => (
   <div>
-    <SubTitle>Your Todo</SubTitle>
+    <StyledSubTitle>Your Todo</StyledSubTitle>
     {todoListStore.todos.map(todo => (
-      <List key={todo.id}>{todo.title}</List>
+      <TodoItem
+        key={todo.id}
+        title={todo.title}
+        description={todo.description}
+      />
     ))}
     {(() => {
       if (!todoListStore.todos.length)
@@ -26,6 +30,11 @@ export const TodoList: React.FC<Props> = observer(({ todoListStore }) => (
     })()}
   </div>
 ))
+
+const StyledSubTitle = styled(SubTitle)`
+  text-align: center;
+  margin-bottom: 1rem;
+`
 
 const MessageWrapper = styled.div`
   display: flex;

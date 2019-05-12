@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 export type Props = {
-  onInput?: () => string | number
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
   placeholder?: string
   value?: string | number
 }
 
-export const Input: React.FC<Props> = ({ onInput, placeholder, value }) => (
-  <BaseStyle value={value} placeholder={placeholder} onInput={onInput} />
+export const Input: React.FC<Props> = ({ onChange, placeholder, value }) => (
+  <BaseStyle value={value} placeholder={placeholder} onChange={onChange} />
 )
 
 const BaseStyle = styled.input`

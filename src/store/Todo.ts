@@ -7,8 +7,8 @@ export class Todo {
   @observable description: string = ''
   @observable finished = false
 
-  constructor(title: string, description: string) {
-    this.title = title
-    this.description = description
-  }
+  // constructor({ title = '' as string, description = '' as string }) {
+  //   this.title = title
+  //   this.description = description
+  // }
 }
