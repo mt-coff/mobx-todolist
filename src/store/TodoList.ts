@@ -20,12 +20,12 @@ export class TodoList {
   @action.bound
   replaceTodo(id: string, todo: Todo) {
     const idx = this.todos.findIndex((el: Todo): boolean => el.id === id)
-    this.todos.splice(idx, 0, todo)
+    this.todos[idx] = todo
   }
 
   @action.bound
   deleteTodo(id: string) {
-    const idx = this.todos.findIndex((el: Todo): boolean => el.id === id)
-    this.todos.splice(idx, 0)
+    const newTodos = this.todos.filter((el: Todo): boolean => el.id !== id)
+    this.todos = newTodos
   }
 }
