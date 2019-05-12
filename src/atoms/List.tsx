@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const List: React.FC = ({ children }) => <Li>{children}</Li>
+export type Props = {
+  className?: string
+}
+
+export const List: React.FC<Props> = ({ children, className }) => (
+  <Li className={className}>{children}</Li>
+)
 
 const Li = styled.li`
   list-style: none;

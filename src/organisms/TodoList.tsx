@@ -32,7 +32,8 @@ export const TodoList: React.FC<Props> = observer(({ todoListStore }) => (
         key={todo.id}
         title={todo.title}
         description={todo.description}
-        clickDone={() => (todo.finished = true)}
+        finished={todo.finished}
+        clickDone={() => (todo.finished = !todo.finished)}
         clickDelete={() => todoListStore.deleteTodo(todo.id)}
       />
     ))}

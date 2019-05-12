@@ -7,6 +7,7 @@ import { DeleteButton } from '../atoms/DeleteButton'
 export type Props = {
   title?: string
   description?: string
+  finished?: boolean
   clickDone?: () => void
   clickDelete?: () => void
 }
@@ -14,20 +15,31 @@ export type Props = {
 export const TodoItem: React.FC<Props> = ({
   title,
   description,
+  finished,
   clickDone,
   clickDelete
 }) => (
-  <List>
+  <StyledList finished={finished}>
     <Wrapper>
       <div>{title}</div>
       <div>{description}</div>
       <Buttons>
-        <DoneButton onClick={clickDone}>Done</DoneButton>
+        <DoneButton onClick={clickDone}>
+          {finished ? 'Start' : 'Done'}
+        </DoneButton>
         <DeleteButton onClick={clickDelete} />
       </Buttons>
     </Wrapper>
-  </List>
+  </StyledList>
 )
+
+type StyledListProps = {
+  finished?: boolean
+}
+const StyledList = styled(List)`
+  background-color: ${(props: StyledListProps) =>
+    props.finished ? '#eee' : 'transparet'};
+`
 
 const Wrapper = styled.div`
   display: flex;
